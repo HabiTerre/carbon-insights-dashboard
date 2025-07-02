@@ -40,6 +40,41 @@
     color: #000 !important;
   }
 
+  /* PDF logo optimization */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid;
+    display: block !important;
+  }
+
+  /* Specific logo sizing for PDF */
+  .pdf-logo {
+    max-height: 60px !important;
+    max-width: 120px !important;
+    object-fit: contain !important;
+    border: 1px solid #e0e0e0 !important;
+    padding: 4px !important;
+    background: white !important;
+  }
+
+  /* Header logos in PDF */
+  .pdf-header img {
+    max-height: 40px !important;
+    max-width: 80px !important;
+  }
+
+  /* Client logo section in PDF */
+  .pdf-client-logo {
+    max-height: 50px !important;
+    max-width: 100px !important;
+    object-fit: contain !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    padding: 2px !important;
+    background: white !important;
+  }
+
   /* PDF table styles - Static content only */
   .pdf-table {
     width: 100%;
@@ -127,5 +162,31 @@
   /* Show PDF-only elements */
   .hidden.print\\:block {
     display: block !important;
+  }
+
+  /* Ensure logo containers maintain structure */
+  .flex {
+    display: flex !important;
+  }
+
+  .items-center {
+    align-items: center !important;
+  }
+
+  .justify-center {
+    justify-content: center !important;
+  }
+
+  .justify-between {
+    justify-content: space-between !important;
+  }
+
+  /* Fix any logo background issues */
+  .bg-white {
+    background-color: white !important;
+  }
+
+  .rounded-lg {
+    border-radius: 8px !important;
   }
 }

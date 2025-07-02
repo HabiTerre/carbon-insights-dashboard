@@ -6,13 +6,17 @@ interface PDFLayoutProps {
   title?: string;
   subtitle?: string;
   showHeader?: boolean;
+  clientLogo?: string;
+  companyLogo?: string;
 }
 
 const PDFLayout = ({ 
   children, 
   title = "Agricultural Sustainability Report", 
   subtitle,
-  showHeader = true 
+  showHeader = true,
+  clientLogo,
+  companyLogo
 }: PDFLayoutProps) => {
   const currentDate = new Date().toLocaleDateString();
   
@@ -20,6 +24,30 @@ const PDFLayout = ({
     <div className="pdf-layout">
       {showHeader && (
         <div className="pdf-header pdf-no-break mb-8">
+          {/* Logo Header Section */}
+          {(clientLogo || companyLogo) && (
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-300">
+              {clientLogo && (
+                <div className="flex items-center">
+                  <img 
+                    src={clientLogo} 
+                    alt="Client Logo" 
+                    className="pdf-client-logo"
+                  />
+                </div>
+              )}
+              {companyLogo && (
+                <div className="flex items-center">
+                  <img 
+                    src={companyLogo} 
+                    alt="Company Logo" 
+                    className="pdf-logo"
+                  />
+                </div>
+              )}
+            </div>
+          )}
+          
           <div className="pdf-title text-center border-b-2 border-black pb-4">
             {title}
           </div>
