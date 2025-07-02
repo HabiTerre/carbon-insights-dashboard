@@ -1,9 +1,16 @@
 
-/* PDF-specific styles */
+/* PDF-specific styles - Static document optimization */
 @media print {
-  /* Hide interactive elements for PDF */
-  .pdf-hide {
+  /* Hide all interactive elements for PDF */
+  .pdf-hide, button, input, select, .cursor-pointer {
     display: none !important;
+  }
+
+  /* Remove hover effects and transitions */
+  * {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
   }
 
   /* Optimize layout for PDF */
@@ -33,7 +40,7 @@
     color: #000 !important;
   }
 
-  /* PDF table styles */
+  /* PDF table styles - Static content only */
   .pdf-table {
     width: 100%;
     border-collapse: collapse;
@@ -53,15 +60,7 @@
     font-weight: bold;
   }
 
-  /* PDF chart containers */
-  .pdf-chart {
-    width: 100%;
-    height: 300px;
-    margin-bottom: 16pt;
-    border: 1px solid #ccc;
-  }
-
-  /* PDF metrics grid */
+  /* PDF metrics grid - Static layout */
   .pdf-metrics-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -75,6 +74,18 @@
     text-align: center;
   }
 
+  /* Static chart placeholders */
+  .pdf-chart-placeholder {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f9f9f9;
+    margin-bottom: 16pt;
+  }
+
   /* Page breaks */
   .pdf-page-break {
     page-break-before: always;
@@ -84,19 +95,37 @@
     page-break-inside: avoid;
   }
 
-  /* Remove shadows and hover effects */
+  /* Remove all shadows, hover effects, and interactive states */
   * {
     box-shadow: none !important;
-    transition: none !important;
+    cursor: default !important;
   }
 
-  /* Ensure white background */
+  /* Ensure static backgrounds */
   body, .bg-white, .bg-gray-50 {
     background: white !important;
   }
 
-  /* Fix text colors for print */
+  /* Fix text colors for print - static values */
   .text-gray-600, .text-gray-700, .text-gray-500 {
     color: #333 !important;
+  }
+
+  .text-green-600 {
+    color: #166534 !important;
+  }
+
+  .text-red-600 {
+    color: #dc2626 !important;
+  }
+
+  /* Hide web-only elements */
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  /* Show PDF-only elements */
+  .hidden.print\\:block {
+    display: block !important;
   }
 }

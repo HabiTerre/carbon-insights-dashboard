@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface PDFLayoutProps {
   children: React.ReactNode;
@@ -15,6 +14,8 @@ const PDFLayout = ({
   subtitle,
   showHeader = true 
 }: PDFLayoutProps) => {
+  const currentDate = new Date().toLocaleDateString();
+  
   return (
     <div className="pdf-layout">
       {showHeader && (
@@ -28,7 +29,7 @@ const PDFLayout = ({
             </div>
           )}
           <div className="pdf-body text-center mt-2 text-sm text-gray-500">
-            Generated on {new Date().toLocaleDateString()}
+            Generated on {currentDate}
           </div>
         </div>
       )}
@@ -37,9 +38,9 @@ const PDFLayout = ({
         {children}
       </div>
       
-      {/* PDF Footer */}
+      {/* Static PDF Footer */}
       <div className="pdf-hide-web fixed bottom-0 left-0 right-0 text-center text-xs text-gray-500 p-4 border-t">
-        Page {typeof window !== 'undefined' && 'print' in window ? '1' : ''}
+        Agricultural Sustainability Report - {currentDate}
       </div>
     </div>
   );

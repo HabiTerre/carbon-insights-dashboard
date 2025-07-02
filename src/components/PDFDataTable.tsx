@@ -25,6 +25,7 @@ const PDFDataTable = ({ data, title = "Field-Level Results" }: PDFDataTableProps
     <div className="pdf-optimize mb-8">
       <h3 className="pdf-subtitle mb-4">{title}</h3>
       
+      {/* Static table - no interactive elements */}
       <table className="pdf-table">
         <thead>
           <tr>
@@ -59,6 +60,12 @@ const PDFDataTable = ({ data, title = "Field-Level Results" }: PDFDataTableProps
           ))}
         </tbody>
       </table>
+      
+      {/* Static summary - no dynamic calculations */}
+      <div className="mt-4 text-sm text-gray-600">
+        Total Fields: {data.length} | 
+        Total Acreage: {data.reduce((sum, field) => sum + field.acreage, 0).toFixed(1)} acres
+      </div>
     </div>
   );
 };
