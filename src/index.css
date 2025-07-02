@@ -1,0 +1,109 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 210 11% 31%; /* Brand text color */
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 11% 31%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 11% 31%;
+
+    --primary: 146 62% 35%; /* Brand primary green */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 146 36% 66%; /* Brand secondary green */
+    --secondary-foreground: 210 11% 31%;
+
+    --muted: 0 0% 90%; /* Brand grey */
+    --muted-foreground: 210 11% 31%;
+
+    --accent: 39 92% 60%; /* Brand orange */
+    --accent-foreground: 210 11% 31%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 146 62% 35%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 210 11% 31%;
+    --sidebar-primary: 146 62% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 210 11% 31%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 146 62% 35%;
+  }
+
+  .dark {
+    --background: 210 11% 31%;
+    --foreground: 0 0% 100%;
+
+    --card: 210 11% 31%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 210 11% 31%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 146 62% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 146 36% 66%;
+    --secondary-foreground: 210 11% 31%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 39 92% 60%;
+    --accent-foreground: 210 11% 31%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 146 62% 35%;
+    --sidebar-background: 210 11% 15%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 146 62% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 11% 20%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 146 62% 35%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-avenir-book;
+  }
+
+  .font-heading {
+    @apply font-avenir-medium;
+  }
+
+  .font-body {
+    @apply font-avenir-book;
+  }
+
+  .font-emphasis {
+    @apply font-avenir-black;
+  }
+}
