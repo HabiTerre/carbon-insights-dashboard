@@ -84,40 +84,51 @@
     background-color: rgba(36, 146, 59, 0.1) !important;
   }
 
-  /* PDF logo optimization with brand styling */
+  /* Enhanced PDF logo optimization with brand styling */
   img {
     max-width: 100% !important;
     height: auto !important;
     page-break-inside: avoid;
     display: block !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
-  /* Specific logo sizing for PDF */
+  /* Specific logo sizing for PDF with enhanced visibility */
   .pdf-logo {
-    max-height: 60px !important;
+    max-height: 48px !important;
     max-width: 120px !important;
     object-fit: contain !important;
-    border: 1px solid #E6E6E6 !important;
-    padding: 4px !important;
+    border: 2px solid #E6E6E6 !important;
+    padding: 8px !important;
     background: white !important;
     border-radius: 8px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
   }
 
-  /* Header logos in PDF */
-  .pdf-header img {
-    max-height: 40px !important;
-    max-width: 80px !important;
-  }
-
-  /* Client logo section in PDF */
+  /* Client logo section in PDF with enhanced styling */
   .pdf-client-logo {
-    max-height: 50px !important;
-    max-width: 100px !important;
+    max-height: 48px !important;
+    max-width: 120px !important;
     object-fit: contain !important;
-    border: 1px solid #E6E6E6 !important;
-    border-radius: 4px !important;
-    padding: 2px !important;
+    border: 2px solid #E6E6E6 !important;
+    border-radius: 8px !important;
+    padding: 8px !important;
     background: white !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  }
+
+  /* Ensure logos are visible in PDF header */
+  .pdf-header {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .pdf-header img {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   /* PDF table styles - Static content only */
@@ -242,4 +253,11 @@
   .rounded-lg {
     border-radius: 8px !important;
   }
+}
+
+/* Web styles for logo display */
+.pdf-client-logo, .pdf-logo {
+  max-height: 48px;
+  max-width: 120px;
+  object-fit: contain;
 }

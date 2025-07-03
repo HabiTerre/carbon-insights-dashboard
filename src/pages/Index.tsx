@@ -97,7 +97,34 @@ const Index = () => {
         <DashboardHeader />
 
         <div className="max-w-7xl mx-auto p-8 space-y-8">
-          {/* Project Summary - moved to first position */}
+          {/* Project Summary with logos visible on web */}
+          <div className="mb-6">
+            <div className="flex items-center justify-between mb-4 p-4 bg-gray-50 rounded-lg border border-brand-grey">
+              <div className="flex items-center space-x-4">
+                <img 
+                  src="/lovable-uploads/07613b3b-5276-40e7-bd7d-04f26184407e.png" 
+                  alt="Tyson Foods Logo" 
+                  className="h-12 w-auto object-contain border border-brand-grey rounded-md p-2 bg-white"
+                />
+                <div>
+                  <p className="text-sm font-avenir-medium text-brand-text">Client</p>
+                  <p className="text-xs text-gray-600 font-avenir-book">Tyson Foods</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="text-right">
+                  <p className="text-xs text-gray-600 font-avenir-book">Powered by</p>
+                  <p className="text-sm font-avenir-medium text-brand-primary">HabiTerre</p>
+                </div>
+                <img 
+                  src="/placeholder.svg" 
+                  alt="HabiTerre Logo" 
+                  className="h-12 w-auto object-contain border border-brand-grey rounded-md p-2 bg-white"
+                />
+              </div>
+            </div>
+          </div>
+
           <ProjectSummaryCard />
 
           {/* Filter Controls - positioned above map */}
