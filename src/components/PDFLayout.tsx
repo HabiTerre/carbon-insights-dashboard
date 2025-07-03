@@ -16,9 +16,17 @@ const PDFLayout = ({
   subtitle,
   showHeader = true,
   clientLogo = "/lovable-uploads/07613b3b-5276-40e7-bd7d-04f26184407e.png",
-  companyLogo = "/placeholder.svg"
+  companyLogo = "/lovable-uploads/371e665e-76d1-439d-9997-0583d836e94c.png"
 }: PDFLayoutProps) => {
   const currentDate = new Date().toLocaleDateString();
+  
+  const handleImageError = (logoType: string) => {
+    console.error(`Failed to load ${logoType} logo in PDF`);
+  };
+
+  const handleImageLoad = (logoType: string) => {
+    console.log(`Successfully loaded ${logoType} logo in PDF`);
+  };
   
   return (
     <div className="pdf-layout">
@@ -32,6 +40,8 @@ const PDFLayout = ({
                 alt="Tyson Foods Logo" 
                 className="pdf-client-logo h-12 w-auto object-contain border border-brand-grey rounded-md p-2 bg-white"
                 style={{ maxHeight: '48px', maxWidth: '120px' }}
+                onLoad={() => handleImageLoad('Tyson Foods')}
+                onError={() => handleImageError('Tyson Foods')}
               />
               <div className="ml-4">
                 <p className="text-sm font-avenir-medium text-brand-text">Client</p>
@@ -48,6 +58,8 @@ const PDFLayout = ({
                 alt="HabiTerre Logo" 
                 className="pdf-logo h-12 w-auto object-contain border border-brand-grey rounded-md p-2 bg-white"
                 style={{ maxHeight: '48px', maxWidth: '120px' }}
+                onLoad={() => handleImageLoad('HabiTerre')}
+                onError={() => handleImageError('HabiTerre')}
               />
             </div>
           </div>

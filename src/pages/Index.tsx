@@ -25,6 +25,10 @@ const Index = () => {
   const [selectedCrop, setSelectedCrop] = useState("all");
   const [selectedMetricCategory, setSelectedMetricCategory] = useState("carbon-intensity");
 
+  // Standardized logo paths
+  const tysonLogo = "/lovable-uploads/07613b3b-5276-40e7-bd7d-04f26184407e.png";
+  const habitarreLogo = "/lovable-uploads/371e665e-76d1-439d-9997-0583d836e94c.png";
+
   const handleClearFilters = () => {
     setSelectedState("all");
     setSelectedCounty("All Counties");
@@ -34,6 +38,14 @@ const Index = () => {
   const handleStateChange = (value: string) => {
     setSelectedState(value);
     setSelectedCounty("All Counties");
+  };
+
+  const handleImageError = (logoType: string) => {
+    console.error(`Failed to load ${logoType} logo in web view`);
+  };
+
+  const handleImageLoad = (logoType: string) => {
+    console.log(`Successfully loaded ${logoType} logo in web view`);
   };
 
   // Sample metrics data for PDF
@@ -68,8 +80,8 @@ const Index = () => {
         <PDFLayout 
           title="Agricultural Sustainability Report" 
           subtitle="Comprehensive Analysis of Carbon Intensity and Sustainable Practices (2018-2024)"
-          clientLogo="/lovable-uploads/07613b3b-5276-40e7-bd7d-04f26184407e.png"
-          companyLogo="/placeholder.svg"
+          clientLogo={tysonLogo}
+          companyLogo={habitarreLogo}
         >
           {/* Executive Summary */}
           <PDFExecutiveSummary />
@@ -102,9 +114,11 @@ const Index = () => {
             <div className="flex items-center justify-between mb-4 p-4 bg-gray-50 rounded-lg border border-brand-grey">
               <div className="flex items-center space-x-4">
                 <img 
-                  src="/lovable-uploads/07613b3b-5276-40e7-bd7d-04f26184407e.png" 
+                  src={tysonLogo} 
                   alt="Tyson Foods Logo" 
-                  className="h-12 w-auto object-contain border border-brand-grey rounded-md p-2 bg-white"
+                  className="h-12 w-auto object-contain border border-brand-grey rounded-md p-2 bg-white logo-display"
+                  onLoad={() => handleImageLoad('Tyson Foods')}
+                  onError={() => handleImageError('Tyson Foods')}
                 />
                 <div>
                   <p className="text-sm font-avenir-medium text-brand-text">Client</p>
@@ -117,9 +131,11 @@ const Index = () => {
                   <p className="text-sm font-avenir-medium text-brand-primary">HabiTerre</p>
                 </div>
                 <img 
-                  src="/placeholder.svg" 
+                  src={habitarreLogo} 
                   alt="HabiTerre Logo" 
-                  className="h-12 w-auto object-contain border border-brand-grey rounded-md p-2 bg-white"
+                  className="h-12 w-auto object-contain border border-brand-grey rounded-md p-2 bg-white logo-display"
+                  onLoad={() => handleImageLoad('HabiTerre')}
+                  onError={() => handleImageError('HabiTerre')}
                 />
               </div>
             </div>

@@ -104,6 +104,8 @@
     background: white !important;
     border-radius: 8px !important;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   /* Client logo section in PDF with enhanced styling */
@@ -116,6 +118,8 @@
     padding: 8px !important;
     background: white !important;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   /* Ensure logos are visible in PDF header */
@@ -131,7 +135,7 @@
     visibility: visible !important;
   }
 
-  /* PDF table styles - Static content only */
+  /* ... keep existing code (PDF table styles and other rules) */
   .pdf-table {
     width: 100%;
     border-collapse: collapse;
@@ -153,7 +157,6 @@
     color: #37414F !important;
   }
 
-  /* PDF metrics grid - Static layout */
   .pdf-metrics-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -169,7 +172,6 @@
     border-radius: 4px;
   }
 
-  /* Static chart placeholders with brand colors */
   .pdf-chart-placeholder {
     width: 100%;
     height: 200px;
@@ -182,7 +184,6 @@
     border-radius: 8px;
   }
 
-  /* Page breaks */
   .pdf-page-break {
     page-break-before: always;
   }
@@ -191,18 +192,15 @@
     page-break-inside: avoid;
   }
 
-  /* Remove all shadows, hover effects, and interactive states */
   * {
     box-shadow: none !important;
     cursor: default !important;
   }
 
-  /* Ensure static backgrounds with brand colors */
   body, .bg-white, .bg-gray-50 {
     background: white !important;
   }
 
-  /* Font family overrides for brand consistency */
   .font-avenir-medium {
     font-family: 'Inter', sans-serif !important;
     font-weight: 500 !important;
@@ -218,17 +216,14 @@
     font-weight: 700 !important;
   }
 
-  /* Hide web-only elements */
   .print\\:hidden {
     display: none !important;
   }
 
-  /* Show PDF-only elements */
   .hidden.print\\:block {
     display: block !important;
   }
 
-  /* Ensure layout containers maintain structure with brand styling */
   .flex {
     display: flex !important;
   }
@@ -245,7 +240,6 @@
     justify-content: space-between !important;
   }
 
-  /* Fix any background issues with brand colors */
   .bg-white {
     background-color: white !important;
   }
@@ -255,9 +249,22 @@
   }
 }
 
-/* Web styles for logo display */
-.pdf-client-logo, .pdf-logo {
-  max-height: 48px;
-  max-width: 120px;
-  object-fit: contain;
+/* Web styles for logo display with improved specificity */
+.logo-display,
+.pdf-client-logo, 
+.pdf-logo {
+  max-height: 48px !important;
+  max-width: 120px !important;
+  object-fit: contain !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Ensure logos are never hidden */
+img[alt*="Logo"], 
+img[src*="lovable-uploads"] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: inline-block !important;
 }
