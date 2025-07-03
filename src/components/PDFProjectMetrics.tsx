@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
@@ -97,8 +96,8 @@ const PDFProjectMetrics = () => {
       <div className="flex items-center justify-between mb-6">
         <h3 className="pdf-subtitle text-center border-b-2 border-brand-primary pb-3 text-brand-text font-avenir-medium flex-1">2. Project-Level Metrics</h3>
         
-        {/* Crop Filter */}
-        <div className="print:hidden flex items-center gap-2 ml-4">
+        {/* Crop Filter - Now visible in web view */}
+        <div className="flex items-center gap-2 ml-4">
           <span className="text-sm font-avenir-medium text-brand-text">Filter by Crop:</span>
           <Select value={selectedCrop} onValueChange={setSelectedCrop}>
             <SelectTrigger className="w-32 border-brand-grey hover:border-brand-primary font-avenir-book">
