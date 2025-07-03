@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TrendingDown, Grid3X3, MapPin, Calendar, Wheat } from "lucide-react";
@@ -46,9 +47,6 @@ const ProjectSummaryCard = () => {
     }
   ];
 
-  console.log('ProjectSummaryCard rendering');
-  console.log('New logo path:', '/lovable-uploads/07613b3b-5276-40e7-bd7d-04f26184407e.png');
-
   return (
     <Card className="border-brand-grey shadow-lg hover:shadow-xl hover:bg-brand-grey/20 hover:border-brand-primary transition-all duration-300 rounded-lg">
       <CardHeader className="rounded-t-lg p-4 sm:p-6" style={{ backgroundColor: 'rgb(245, 245, 245)' }}>
@@ -60,20 +58,11 @@ const ProjectSummaryCard = () => {
             </p>
           </div>
           
-          {/* Enhanced Client Section */}
-          <div className="flex items-center justify-center lg:justify-end gap-3 p-3 bg-white/60 rounded-lg border border-brand-grey/30">
+          {/* Simplified Client Section - Name Only */}
+          <div className="flex items-center justify-center lg:justify-end p-3 bg-white/60 rounded-lg border border-brand-grey/30">
             <div className="text-center lg:text-right">
               <p className="text-[10px] sm:text-xs text-brand-text/70 font-avenir-book uppercase tracking-wide">Client</p>
               <p className="text-sm sm:text-base font-avenir-medium text-brand-text">Tyson Foods</p>
-            </div>
-            <div className="relative">
-              <img 
-                src="/lovable-uploads/07613b3b-5276-40e7-bd7d-04f26184407e.png" 
-                alt="Tyson Foods Logo" 
-                className="h-12 w-12 sm:h-16 sm:w-16 lg:h-20 lg:w-20 object-contain rounded-lg border border-gray-200 bg-white shadow-sm"
-                onLoad={() => console.log('Tyson logo loaded successfully')}
-                onError={(e) => console.error('Failed to load Tyson logo:', e)}
-              />
             </div>
           </div>
         </div>
