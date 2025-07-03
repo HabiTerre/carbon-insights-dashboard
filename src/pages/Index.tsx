@@ -12,6 +12,12 @@ import DashboardTabs from "@/components/DashboardTabs";
 import ProjectSummaryCard from "@/components/ProjectSummaryCard";
 import PDFLayout from "@/components/PDFLayout";
 import PDFMetricsGrid from "@/components/PDFMetricsGrid";
+import PDFExecutiveSummary from "@/components/PDFExecutiveSummary";
+import PDFPracticesAnalysis from "@/components/PDFPracticesAnalysis";
+import PDFGeographicSummary from "@/components/PDFGeographicSummary";
+import PDFDataTable from "@/components/PDFDataTable";
+import PDFMethodology from "@/components/PDFMethodology";
+import { fieldLevelData } from "@/data/fieldData";
 
 const Index = () => {
   const [selectedState, setSelectedState] = useState("all");
@@ -34,25 +40,25 @@ const Index = () => {
   // Sample metrics data for PDF
   const sampleMetrics = [
     {
-      title: "Carbon Intensity",
-      current: 2.45,
-      baseline: 2.78,
+      title: "Net Emission Factor",
+      current: 1.9,
+      baseline: 2.8,
       unit: "kg CO2eq/kg",
-      change: -11.9
+      change: -32.1
     },
     {
-      title: "N2O Emissions",
-      current: 1.23,
-      baseline: 1.45,
-      unit: "kg N2O/ha",
-      change: -15.2
+      title: "Total CO2 Removal",
+      current: 23800,
+      baseline: 14500,
+      unit: "tonnes",
+      change: 64.1
     },
     {
-      title: "Soil Carbon",
-      current: 45.6,
-      baseline: 42.1,
-      unit: "tonnes C/ha",
-      change: 8.3
+      title: "Nitrogen Efficiency",
+      current: 0.64,
+      baseline: 0.48,
+      unit: "ratio",
+      change: 33.3
     }
   ];
 
@@ -62,28 +68,31 @@ const Index = () => {
       <div className="hidden print:block">
         <PDFLayout 
           title="Agricultural Sustainability Report" 
-          subtitle="Carbon Intensity and Emissions Analysis"
+          subtitle="Comprehensive Analysis of Carbon Intensity and Sustainable Practices (2018-2024)"
           clientLogo="/lovable-uploads/07613b3b-5276-40e7-bd7d-04f26184407e.png"
           companyLogo="/placeholder.svg"
         >
-          <PDFMetricsGrid metrics={sampleMetrics} title="Key Performance Metrics" />
+          {/* Executive Summary */}
+          <PDFExecutiveSummary />
           
-          <div className="pdf-optimize mb-8">
-            <h3 className="pdf-subtitle mb-4">Project Summary</h3>
-            <div className="pdf-body space-y-4">
-              <p>This report presents the agricultural sustainability metrics for the selected regions and time period.</p>
-              <p>Selected State: {selectedState === "all" ? "All States" : selectedState}</p>
-              <p>Selected County: {selectedCounty}</p>
-              <p>Report Year: {selectedYear}</p>
-            </div>
-          </div>
+          {/* Key Performance Metrics */}
+          <PDFMetricsGrid metrics={sampleMetrics} title="Key Performance Indicators" />
           
-          <div className="pdf-chart-placeholder">
-            <div className="text-center text-gray-500">
-              <p className="font-semibold">Emissions Map Visualization</p>
-              <p className="text-sm">Geographic distribution of emission factors</p>
-            </div>
-          </div>
+          {/* Management Practices Analysis */}
+          <PDFPracticesAnalysis />
+          
+          {/* Geographic Summary */}
+          <PDFGeographicSummary 
+            selectedState={selectedState}
+            selectedCounty={selectedCounty}
+            selectedYear={selectedYear}
+          />
+          
+          {/* Field-Level Data Table */}
+          <PDFDataTable data={fieldLevelData} title="Representative Field-Level Results" />
+          
+          {/* Methodology & Notes */}
+          <PDFMethodology />
         </PDFLayout>
       </div>
 
