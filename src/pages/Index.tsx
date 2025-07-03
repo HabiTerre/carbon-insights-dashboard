@@ -1,6 +1,5 @@
 
 import React from 'react';
-import DashboardHeader from "@/components/DashboardHeader";
 import MetricsSection from "@/components/MetricsSection";
 import DashboardTabs from "@/components/DashboardTabs";
 import ProjectSummaryCard from "@/components/ProjectSummaryCard";
@@ -28,9 +27,9 @@ const Index = () => {
 
   const { handleImageError, handleImageLoad } = useImageHandlers();
 
-  // Updated logo paths to use the correct uploaded files
-  const tysonLogo = "/lovable-uploads/e27bcd22-cb8b-4faa-996d-45e3ea71f61f.png";
-  const habitarreLogo = "/lovable-uploads/27678809-5c44-4b89-abbd-16c81a9158d7.png";
+  // Updated to use the new uploaded logos
+  const tysonLogo = "/lovable-uploads/465f8949-e376-4c51-be65-f6c5fc5848a0.png";
+  const habitarreLogo = "/lovable-uploads/45f07eea-dc05-4677-9da7-2dd0b00bdee4.png";
 
   const sampleMetrics = [
     {
@@ -68,8 +67,6 @@ const Index = () => {
       />
 
       <div className="print:hidden min-h-screen bg-white">
-        <DashboardHeader />
-
         <div className="max-w-7xl mx-auto p-8 space-y-8">
           <LogosSection 
             tysonLogo={tysonLogo}
