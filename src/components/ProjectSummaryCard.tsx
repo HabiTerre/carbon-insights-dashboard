@@ -47,6 +47,29 @@ const ProjectSummaryCard = () => {
     }
   ];
 
+  const cropReductions = [
+    {
+      crop: "Corn",
+      reduction: 28,
+      color: "bg-yellow-500"
+    },
+    {
+      crop: "Soybean",
+      reduction: 35,
+      color: "bg-green-500"
+    },
+    {
+      crop: "Wheat",
+      reduction: 24,
+      color: "bg-orange-400"
+    },
+    {
+      crop: "Double Crop",
+      reduction: 41,
+      color: "bg-blue-400"
+    }
+  ];
+
   return (
     <Card className="border-brand-grey shadow-lg hover:shadow-xl hover:bg-brand-grey/20 hover:border-brand-primary transition-all duration-300 rounded-lg">
       <CardHeader className="rounded-t-lg p-4 sm:p-6" style={{ backgroundColor: 'rgb(245, 245, 245)' }}>
@@ -104,6 +127,40 @@ const ProjectSummaryCard = () => {
               </div>
             );
           })}
+        </div>
+        
+        {/* Net Reduction by Crop Section */}
+        <div className="mt-6 sm:mt-8 lg:mt-10">
+          <div className="text-center mb-4 sm:mb-6">
+            <div className="inline-flex items-center gap-2 mb-2">
+              <div className="w-8 h-[1px] bg-gradient-to-r from-transparent to-brand-primary"></div>
+              <h3 className="text-base sm:text-lg font-avenir-medium text-brand-text">
+                Net Reduction by Crop
+              </h3>
+              <div className="w-8 h-[1px] bg-gradient-to-l from-transparent to-brand-primary"></div>
+            </div>
+            <p className="text-xs sm:text-sm text-brand-text/70 font-avenir-book">
+              GHG emission factor reduction percentage by crop type (2018-2024)
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            {cropReductions.map((item, index) => (
+              <div 
+                key={item.crop}
+                className="group relative text-center p-3 sm:p-4 rounded-xl border border-brand-grey/40 hover:border-brand-secondary/50 hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-gray-50/30"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className={`w-8 h-8 sm:w-10 sm:h-10 ${item.color} rounded-full mx-auto mb-2 sm:mb-3 opacity-20 group-hover:opacity-30 transition-opacity`}></div>
+                <div className="text-lg sm:text-xl font-avenir-black text-brand-primary mb-1">
+                  {item.reduction}%
+                </div>
+                <div className="text-xs sm:text-sm font-avenir-medium text-brand-text">
+                  {item.crop}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
         
         {/* Enhanced Impact Section */}
