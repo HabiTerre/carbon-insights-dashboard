@@ -95,7 +95,9 @@ const Index = () => {
 
           <MetricsSection 
             selectedMetricCategory={selectedMetricCategory}
+            selectedCrop={selectedCrop}
             onCategoryChange={setSelectedMetricCategory}
+            onCropChange={setSelectedCrop}
           />
 
           <DashboardTabs 

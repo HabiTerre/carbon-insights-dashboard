@@ -1,33 +1,54 @@
+
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import MetricsCard from "@/components/MetricsCard";
 import { categoryDefinitions, carbonIntensityMetrics, practicesMetrics, efficiencyMetrics, type MetricData } from '@/data/metricsData';
+
 interface MetricsSectionProps {
   selectedMetricCategory: string;
+  selectedCrop: string;
   onCategoryChange: (value: string) => void;
+  onCropChange: (value: string) => void;
 }
+
 const MetricsSection: React.FC<MetricsSectionProps> = ({
   selectedMetricCategory,
-  onCategoryChange
+  selectedCrop,
+  onCategoryChange,
+  onCropChange
 }) => {
   const getCurrentMetrics = (): MetricData[] => {
+    let metrics: MetricData[];
     switch (selectedMetricCategory) {
       case "carbon-intensity":
-        return carbonIntensityMetrics;
+        metrics = carbonIntensityMetrics;
+        break;
       case "practices":
-        return practicesMetrics;
+        metrics = practicesMetrics;
+        break;
       case "efficiency":
-        return efficiencyMetrics;
+        metrics = efficiencyMetrics;
+        break;
       default:
-        return carbonIntensityMetrics;
+        metrics = carbonIntensityMetrics;
     }
+
+    // Filter by crop if not "all"
+    if (selectedCrop !== "all") {
+      // For now, return all metrics since we don't have crop-specific data structure
+      // In a real implementation, you'd filter based on crop type
+      return metrics;
+    }
+    
+    return metrics;
   };
+
   const currentMetrics = getCurrentMetrics();
-  return <Card className="border-brand-grey shadow-lg hover:shadow-xl hover:bg-brand-grey/20 hover:border-brand-primary transition-all duration-300 rounded-lg">
-      <CardHeader className="rounded-t-lg" style={{
-      backgroundColor: 'rgb(245, 245, 245)'
-    }}>
+
+  return (
+    <Card className="border-brand-grey shadow-lg hover:shadow-xl hover:bg-brand-grey/20 hover:border-brand-primary transition-all duration-300 rounded-lg">
+      <CardHeader className="rounded-t-lg" style={{ backgroundColor: 'rgb(245, 245, 245)' }}>
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
           <div className="flex-1">
             <CardTitle className="text-brand-text text-xl font-avenir-medium">Project-Level Metrics</CardTitle>
@@ -52,6 +73,20 @@ const MetricsSection: React.FC<MetricsSectionProps> = ({
                   <SelectItem value="efficiency" className="hover:bg-brand-grey/30 font-avenir-book">
                     Efficiency
                   </SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="flex items-center space-x-2">
+              <span className="text-sm font-avenir-medium text-brand-text">Crop:</span>
+              <Select value={selectedCrop} onValueChange={onCropChange}>
+                <SelectTrigger className="w-32 border-brand-grey hover:border-brand-primary transition-colors shadow-sm font-avenir-book">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-white border border-brand-grey shadow-xl z-50">
+                  <SelectItem value="all" className="hover:bg-brand-grey/30 font-avenir-book">All Crops</SelectItem>
+                  <SelectItem value="corn" className="hover:bg-brand-grey/30 font-avenir-book">Corn</SelectItem>
+                  <SelectItem value="soybean" className="hover:bg-brand-grey/30 font-avenir-book">Soybean</SelectItem>
+                  <SelectItem value="wheat" className="hover:bg-brand-grey/30 font-avenir-book">Wheat</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -101,6 +136,8 @@ const MetricsSection: React.FC<MetricsSectionProps> = ({
           </div>
         </div>
       </CardContent>
-    </Card>;
+    </Card>
+  );
 };
+
 export default MetricsSection;
