@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -87,9 +86,6 @@ const Index = () => {
             selectedCounty={selectedCounty}
             selectedYear={selectedYear}
           />
-          
-          {/* Field-Level Data Table */}
-          <PDFDataTable data={fieldLevelData} title="Representative Field-Level Results" />
           
           {/* Methodology & Notes */}
           <PDFMethodology />
