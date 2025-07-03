@@ -3,7 +3,7 @@ import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 
 const DashboardHeader = () => {
-  const habitarreLogo = "/lovable-uploads/371e665e-76d1-439d-9997-0583d836e94c.png";
+  const habitarreLogo = "/lovable-uploads/27678809-5c44-4b89-abbd-16c81a9158d7.png";
 
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
     console.error('Failed to load HabiTerre logo in dashboard header');

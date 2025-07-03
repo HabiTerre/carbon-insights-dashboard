@@ -25,9 +25,9 @@ const Index = () => {
   const [selectedCrop, setSelectedCrop] = useState("all");
   const [selectedMetricCategory, setSelectedMetricCategory] = useState("carbon-intensity");
 
-  // Standardized logo paths
-  const tysonLogo = "/lovable-uploads/07613b3b-5276-40e7-bd7d-04f26184407e.png";
-  const habitarreLogo = "/lovable-uploads/371e665e-76d1-439d-9997-0583d836e94c.png";
+  // Updated logo paths
+  const tysonLogo = "/lovable-uploads/26173478-1c51-4672-a61a-bcaaf8e1e427.png";
+  const habitarreLogo = "/lovable-uploads/27678809-5c44-4b89-abbd-16c81a9158d7.png";
 
   const handleClearFilters = () => {
     setSelectedState("all");
