@@ -40,15 +40,20 @@ const Index = () => {
     setSelectedCounty("All Counties");
   };
 
-  const handleImageError = (logoType: string) => {
+  const handleImageError = (logoType: string) => (e: React.SyntheticEvent<HTMLImageElement>) => {
     console.error(`Failed to load ${logoType} logo in web view`);
+    console.error('Image src:', e.currentTarget.src);
+    console.error('Full URL attempted:', window.location.origin + e.currentTarget.src);
+    // Hide the image if it fails to load
+    e.currentTarget.style.display = 'none';
   };
 
-  const handleImageLoad = (logoType: string) => {
+  const handleImageLoad = (logoType: string) => (e: React.SyntheticEvent<HTMLImageElement>) => {
     console.log(`Successfully loaded ${logoType} logo in web view`);
+    console.log('Image src:', e.currentTarget.src);
+    e.currentTarget.style.display = 'block';
   };
 
-  // Sample metrics data for PDF
   const sampleMetrics = [
     {
       title: "Net Emission Factor",
@@ -83,23 +88,14 @@ const Index = () => {
           clientLogo={tysonLogo}
           companyLogo={habitarreLogo}
         >
-          {/* Executive Summary */}
           <PDFExecutiveSummary />
-          
-          {/* Key Performance Metrics */}
           <PDFMetricsGrid metrics={sampleMetrics} title="Key Performance Indicators" />
-          
-          {/* Management Practices Analysis */}
           <PDFPracticesAnalysis />
-          
-          {/* Geographic Summary */}
           <PDFGeographicSummary 
             selectedState={selectedState}
             selectedCounty={selectedCounty}
             selectedYear={selectedYear}
           />
-          
-          {/* Methodology & Notes */}
           <PDFMethodology />
         </PDFLayout>
       </div>
@@ -116,9 +112,15 @@ const Index = () => {
                 <img 
                   src={tysonLogo} 
                   alt="Tyson Foods Logo" 
-                  className="h-12 w-auto object-contain border border-brand-grey rounded-md p-2 bg-white logo-display"
-                  onLoad={() => handleImageLoad('Tyson Foods')}
-                  onError={() => handleImageError('Tyson Foods')}
+                  className="h-12 w-auto object-contain border border-brand-grey rounded-md p-2 bg-white"
+                  style={{ 
+                    display: 'block',
+                    maxWidth: '120px',
+                    maxHeight: '48px',
+                    objectFit: 'contain'
+                  }}
+                  onLoad={handleImageLoad('Tyson Foods')}
+                  onError={handleImageError('Tyson Foods')}
                 />
                 <div>
                   <p className="text-sm font-avenir-medium text-brand-text">Client</p>
@@ -133,9 +135,15 @@ const Index = () => {
                 <img 
                   src={habitarreLogo} 
                   alt="HabiTerre Logo" 
-                  className="h-12 w-auto object-contain border border-brand-grey rounded-md p-2 bg-white logo-display"
-                  onLoad={() => handleImageLoad('HabiTerre')}
-                  onError={() => handleImageError('HabiTerre')}
+                  className="h-12 w-auto object-contain border border-brand-grey rounded-md p-2 bg-white"
+                  style={{ 
+                    display: 'block',
+                    maxWidth: '120px',
+                    maxHeight: '48px',
+                    objectFit: 'contain'
+                  }}
+                  onLoad={handleImageLoad('HabiTerre')}
+                  onError={handleImageError('HabiTerre')}
                 />
               </div>
             </div>
@@ -143,7 +151,6 @@ const Index = () => {
 
           <ProjectSummaryCard />
 
-          {/* Filter Controls - positioned above map */}
           <Card className="border-brand-grey shadow-lg hover:shadow-xl hover:bg-brand-grey/20 hover:border-brand-primary transition-all duration-300">
             <CardContent className="p-6">
               <div className="flex flex-wrap gap-4 items-center justify-between">
@@ -175,9 +182,7 @@ const Index = () => {
             </CardContent>
           </Card>
 
-          {/* Main Dashboard */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 h-96">
-            {/* Map Section */}
             <div className="lg:col-span-2 h-full">
               <Card className="h-full border-brand-grey shadow-lg hover:shadow-xl hover:bg-brand-grey/20 hover:border-brand-primary transition-all duration-300">
                 <CardContent className="p-6 h-full">
@@ -190,19 +195,16 @@ const Index = () => {
               </Card>
             </div>
 
-            {/* Crop Statistics */}
             <div className="h-full">
               <CropStatistics />
             </div>
           </div>
 
-          {/* Metrics Section */}
           <MetricsSection 
             selectedMetricCategory={selectedMetricCategory}
             onCategoryChange={setSelectedMetricCategory}
           />
 
-          {/* Dashboard Tabs */}
           <DashboardTabs 
             selectedCrop={selectedCrop}
             onCropChange={setSelectedCrop}

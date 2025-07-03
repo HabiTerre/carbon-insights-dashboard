@@ -20,28 +20,42 @@ const PDFLayout = ({
 }: PDFLayoutProps) => {
   const currentDate = new Date().toLocaleDateString();
   
-  const handleImageError = (logoType: string) => {
+  const handleImageError = (logoType: string) => (e: React.SyntheticEvent<HTMLImageElement>) => {
     console.error(`Failed to load ${logoType} logo in PDF`);
+    console.error('Image src:', e.currentTarget.src);
+    console.error('Full URL attempted:', window.location.origin + e.currentTarget.src);
+    // Hide the image if it fails to load in PDF
+    e.currentTarget.style.display = 'none';
   };
 
-  const handleImageLoad = (logoType: string) => {
+  const handleImageLoad = (logoType: string) => (e: React.SyntheticEvent<HTMLImageElement>) => {
     console.log(`Successfully loaded ${logoType} logo in PDF`);
+    console.log('Image src:', e.currentTarget.src);
+    e.currentTarget.style.display = 'block';
   };
   
   return (
     <div className="pdf-layout">
       {showHeader && (
         <div className="pdf-header pdf-no-break mb-8">
-          {/* Enhanced Logo Header Section with Brand Colors */}
           <div className="flex items-center justify-between mb-6 pb-4 border-b-2 border-brand-primary">
             <div className="flex items-center">
               <img 
                 src={clientLogo} 
                 alt="Tyson Foods Logo" 
-                className="pdf-client-logo h-12 w-auto object-contain border border-brand-grey rounded-md p-2 bg-white"
-                style={{ maxHeight: '48px', maxWidth: '120px' }}
-                onLoad={() => handleImageLoad('Tyson Foods')}
-                onError={() => handleImageError('Tyson Foods')}
+                className="pdf-client-logo"
+                style={{ 
+                  display: 'block',
+                  maxHeight: '48px', 
+                  maxWidth: '120px',
+                  objectFit: 'contain',
+                  border: '2px solid #E6E6E6',
+                  borderRadius: '8px',
+                  padding: '8px',
+                  background: 'white'
+                }}
+                onLoad={handleImageLoad('Tyson Foods')}
+                onError={handleImageError('Tyson Foods')}
               />
               <div className="ml-4">
                 <p className="text-sm font-avenir-medium text-brand-text">Client</p>
@@ -56,10 +70,19 @@ const PDFLayout = ({
               <img 
                 src={companyLogo} 
                 alt="HabiTerre Logo" 
-                className="pdf-logo h-12 w-auto object-contain border border-brand-grey rounded-md p-2 bg-white"
-                style={{ maxHeight: '48px', maxWidth: '120px' }}
-                onLoad={() => handleImageLoad('HabiTerre')}
-                onError={() => handleImageError('HabiTerre')}
+                className="pdf-logo"
+                style={{ 
+                  display: 'block',
+                  maxHeight: '48px', 
+                  maxWidth: '120px',
+                  objectFit: 'contain',
+                  border: '2px solid #E6E6E6',
+                  borderRadius: '8px',
+                  padding: '8px',
+                  background: 'white'
+                }}
+                onLoad={handleImageLoad('HabiTerre')}
+                onError={handleImageError('HabiTerre')}
               />
             </div>
           </div>
@@ -82,7 +105,6 @@ const PDFLayout = ({
         {children}
       </div>
       
-      {/* Enhanced PDF Footer with Brand Colors */}
       <div className="pdf-hide-web fixed bottom-0 left-0 right-0 text-center text-xs text-brand-text p-4 border-t-2 border-brand-primary bg-white">
         <div className="flex items-center justify-center space-x-4">
           <span className="font-avenir-medium">Agricultural Sustainability Report</span>

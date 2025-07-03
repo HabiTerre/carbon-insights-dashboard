@@ -5,12 +5,18 @@ import { Card, CardContent } from "@/components/ui/card";
 const DashboardHeader = () => {
   const habitarreLogo = "/lovable-uploads/371e665e-76d1-439d-9997-0583d836e94c.png";
 
-  const handleImageError = () => {
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
     console.error('Failed to load HabiTerre logo in dashboard header');
+    console.error('Image src:', e.currentTarget.src);
+    console.error('Full URL attempted:', window.location.origin + e.currentTarget.src);
+    // Try to show a fallback
+    e.currentTarget.style.display = 'none';
   };
 
-  const handleImageLoad = () => {
+  const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
     console.log('Successfully loaded HabiTerre logo in dashboard header');
+    console.log('Image src:', e.currentTarget.src);
+    e.currentTarget.style.display = 'block';
   };
 
   return (
@@ -34,7 +40,13 @@ const DashboardHeader = () => {
               <img 
                 src={habitarreLogo} 
                 alt="HabiTerre Logo" 
-                className="h-12 w-12 object-cover object-left-bottom rounded-lg logo-display"
+                className="h-12 w-12 object-contain rounded-lg"
+                style={{ 
+                  display: 'block',
+                  maxWidth: '48px',
+                  maxHeight: '48px',
+                  objectFit: 'contain'
+                }}
                 onLoad={handleImageLoad}
                 onError={handleImageError}
               />
