@@ -15,7 +15,7 @@ const PDFLayout = ({
   title = "Agricultural Sustainability Report", 
   subtitle,
   showHeader = true,
-  clientLogo = "/lovable-uploads/26173478-1c51-4672-a61a-bcaaf8e1e427.png",
+  clientLogo = "/lovable-uploads/e27bcd22-cb8b-4faa-996d-45e3ea71f61f.png",
   companyLogo = "/lovable-uploads/27678809-5c44-4b89-abbd-16c81a9158d7.png"
 }: PDFLayoutProps) => {
   const currentDate = new Date().toLocaleDateString();

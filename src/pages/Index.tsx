@@ -28,8 +28,8 @@ const Index = () => {
 
   const { handleImageError, handleImageLoad } = useImageHandlers();
 
-  // Logo paths
-  const tysonLogo = "/lovable-uploads/26173478-1c51-4672-a61a-bcaaf8e1e427.png";
+  // Updated logo paths to use the correct uploaded files
+  const tysonLogo = "/lovable-uploads/e27bcd22-cb8b-4faa-996d-45e3ea71f61f.png";
   const habitarreLogo = "/lovable-uploads/27678809-5c44-4b89-abbd-16c81a9158d7.png";
 
   const sampleMetrics = [
