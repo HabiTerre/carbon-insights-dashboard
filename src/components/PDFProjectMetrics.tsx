@@ -1,10 +1,7 @@
 
-import React, { useState } from 'react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import React from 'react';
 
 const PDFProjectMetrics = () => {
-  const [selectedCrop, setSelectedCrop] = useState("all");
-
   const ghgOutcomes = [
     {
       crop: 'Corn',
@@ -43,11 +40,6 @@ const PDFProjectMetrics = () => {
       }
     }
   ];
-
-  // Filter data based on selected crop
-  const filteredGhgOutcomes = selectedCrop === "all" 
-    ? ghgOutcomes 
-    : ghgOutcomes.filter(item => item.crop.toLowerCase() === selectedCrop.toLowerCase());
 
   const rotationData = {
     avgCrops2018: 2.1,
@@ -94,25 +86,7 @@ const PDFProjectMetrics = () => {
 
   return (
     <div className="pdf-optimize mb-12">
-      <div className="flex items-center justify-between mb-6">
-        <h3 className="pdf-subtitle text-center border-b-2 border-brand-primary pb-3 text-brand-text font-avenir-medium flex-1">2. Project-Level Metrics</h3>
-        
-        {/* Crop Filter - Visible in both web and PDF */}
-        <div className="flex items-center gap-2 ml-4">
-          <span className="text-sm font-avenir-medium text-brand-text">Filter by Crop:</span>
-          <Select value={selectedCrop} onValueChange={setSelectedCrop}>
-            <SelectTrigger className="w-32 border-brand-grey hover:border-brand-primary font-avenir-book">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent className="bg-white border border-brand-grey shadow-lg z-50">
-              <SelectItem value="all" className="font-avenir-book">All Crops</SelectItem>
-              <SelectItem value="corn" className="font-avenir-book">Corn</SelectItem>
-              <SelectItem value="soybean" className="font-avenir-book">Soybean</SelectItem>
-              <SelectItem value="wheat" className="font-avenir-book">Wheat</SelectItem>
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
+      <h3 className="pdf-subtitle text-center border-b-2 border-brand-primary pb-3 text-brand-text font-avenir-medium mb-6">2. Project-Level Metrics</h3>
       
       {/* GHG Outcomes */}
       <div className="mb-10">
@@ -125,7 +99,7 @@ const PDFProjectMetrics = () => {
           </p>
         </div>
 
-        {filteredGhgOutcomes.map((crop, index) => (
+        {ghgOutcomes.map((crop, index) => (
           <div key={index} className="mb-8 border border-gray-300 rounded-lg overflow-hidden">
             <div className="bg-gray-100 px-4 py-3 border-b border-gray-300">
               <h5 className="font-avenir-medium text-brand-text">{crop.crop} - GHG Metrics</h5>
