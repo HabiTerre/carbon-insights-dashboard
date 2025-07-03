@@ -19,28 +19,72 @@
     page-break-inside: avoid;
   }
 
-  /* PDF-specific typography */
+  /* PDF-specific typography with brand fonts */
   .pdf-title {
     font-size: 18pt;
     font-weight: bold;
     margin-bottom: 12pt;
-    color: #000 !important;
+    color: #37414F !important; /* brand-text */
+    font-family: 'Inter', sans-serif;
   }
 
   .pdf-subtitle {
     font-size: 14pt;
     font-weight: 600;
     margin-bottom: 8pt;
-    color: #333 !important;
+    color: #37414F !important; /* brand-text */
+    font-family: 'Inter', sans-serif;
   }
 
   .pdf-body {
     font-size: 11pt;
     line-height: 1.4;
-    color: #000 !important;
+    color: #37414F !important; /* brand-text */
+    font-family: 'Inter', sans-serif;
   }
 
-  /* PDF logo optimization */
+  /* Brand color overrides for PDF */
+  .text-brand-primary {
+    color: #24923B !important;
+  }
+
+  .text-brand-secondary {
+    color: #8CC699 !important;
+  }
+
+  .text-brand-orange {
+    color: #F9B442 !important;
+  }
+
+  .text-brand-text {
+    color: #37414F !important;
+  }
+
+  .border-brand-primary {
+    border-color: #24923B !important;
+  }
+
+  .border-brand-secondary {
+    border-color: #8CC699 !important;
+  }
+
+  .border-brand-orange {
+    border-color: #F9B442 !important;
+  }
+
+  .border-brand-grey {
+    border-color: #E6E6E6 !important;
+  }
+
+  .bg-brand-primary {
+    background-color: #24923B !important;
+  }
+
+  .bg-brand-primary\/10 {
+    background-color: rgba(36, 146, 59, 0.1) !important;
+  }
+
+  /* PDF logo optimization with brand styling */
   img {
     max-width: 100% !important;
     height: auto !important;
@@ -53,9 +97,10 @@
     max-height: 60px !important;
     max-width: 120px !important;
     object-fit: contain !important;
-    border: 1px solid #e0e0e0 !important;
+    border: 1px solid #E6E6E6 !important;
     padding: 4px !important;
     background: white !important;
+    border-radius: 8px !important;
   }
 
   /* Header logos in PDF */
@@ -69,7 +114,7 @@
     max-height: 50px !important;
     max-width: 100px !important;
     object-fit: contain !important;
-    border: 1px solid #ddd !important;
+    border: 1px solid #E6E6E6 !important;
     border-radius: 4px !important;
     padding: 2px !important;
     background: white !important;
@@ -84,15 +129,17 @@
 
   .pdf-table th,
   .pdf-table td {
-    border: 1px solid #000;
+    border: 1px solid #37414F;
     padding: 6pt;
     font-size: 10pt;
     text-align: left;
+    font-family: 'Inter', sans-serif;
   }
 
   .pdf-table th {
     background-color: #f0f0f0 !important;
     font-weight: bold;
+    color: #37414F !important;
   }
 
   /* PDF metrics grid - Static layout */
@@ -104,21 +151,24 @@
   }
 
   .pdf-metric-card {
-    border: 1px solid #000;
+    border: 1px solid #24923B;
     padding: 8pt;
     text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 4px;
   }
 
-  /* Static chart placeholders */
+  /* Static chart placeholders with brand colors */
   .pdf-chart-placeholder {
     width: 100%;
     height: 200px;
-    border: 1px solid #ccc;
+    border: 2px dashed #24923B;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #f9f9f9;
     margin-bottom: 16pt;
+    border-radius: 8px;
   }
 
   /* Page breaks */
@@ -136,22 +186,25 @@
     cursor: default !important;
   }
 
-  /* Ensure static backgrounds */
+  /* Ensure static backgrounds with brand colors */
   body, .bg-white, .bg-gray-50 {
     background: white !important;
   }
 
-  /* Fix text colors for print - static values */
-  .text-gray-600, .text-gray-700, .text-gray-500 {
-    color: #333 !important;
+  /* Font family overrides for brand consistency */
+  .font-avenir-medium {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 500 !important;
   }
 
-  .text-green-600 {
-    color: #166534 !important;
+  .font-avenir-book {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 400 !important;
   }
 
-  .text-red-600 {
-    color: #dc2626 !important;
+  .font-avenir-black {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 700 !important;
   }
 
   /* Hide web-only elements */
@@ -164,7 +217,7 @@
     display: block !important;
   }
 
-  /* Ensure logo containers maintain structure */
+  /* Ensure layout containers maintain structure with brand styling */
   .flex {
     display: flex !important;
   }
@@ -181,7 +234,7 @@
     justify-content: space-between !important;
   }
 
-  /* Fix any logo background issues */
+  /* Fix any background issues with brand colors */
   .bg-white {
     background-color: white !important;
   }
