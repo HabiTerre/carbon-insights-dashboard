@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const PDFProjectMetrics = () => {
@@ -85,14 +84,14 @@ const PDFProjectMetrics = () => {
   };
 
   return (
-    <div className="pdf-optimize mb-12">
+    <div className="pdf-optimize pdf-section-page mb-12">
       <h3 className="pdf-subtitle text-center border-b-2 border-brand-primary pb-3 text-brand-text font-avenir-medium mb-6">2. Project-Level Metrics</h3>
       
       {/* GHG Outcomes */}
-      <div className="mb-10">
+      <div className="mb-8 pdf-section-spacing">
         <h4 className="font-avenir-medium text-lg mb-4 text-brand-primary border-b border-brand-primary pb-2">GHG Outcomes</h4>
         
-        <div className="bg-blue-50 p-4 rounded-lg border border-blue-200 mb-4">
+        <div className="bg-blue-50 p-3 rounded-lg border border-blue-200 mb-4 pdf-no-break">
           <p className="text-sm font-avenir-book mb-2">
             <strong className="text-brand-primary">Net Emission Factor Definition:</strong> Greenhouse gas net emission factor accounting for both emissions and removals, 
             expressed as kg CO2 equivalent per kg of crop yield. This represents the net climate impact of agricultural production.
@@ -100,18 +99,18 @@ const PDFProjectMetrics = () => {
         </div>
 
         {ghgOutcomes.map((crop, index) => (
-          <div key={index} className="mb-8 border border-gray-300 rounded-lg overflow-hidden">
-            <div className="bg-gray-100 px-4 py-3 border-b border-gray-300">
+          <div key={index} className="crop-metrics-card border border-gray-300 rounded-lg overflow-hidden">
+            <div className="bg-gray-100 px-4 py-2 border-b border-gray-300">
               <h5 className="font-avenir-medium text-brand-text">{crop.crop} - GHG Metrics</h5>
             </div>
             
-            <div className="p-4">
-              <div className="grid grid-cols-3 gap-6 mb-4">
+            <div className="p-3">
+              <div className="grid grid-cols-3 gap-4 mb-3">
                 <div className="text-center">
-                  <div className="font-avenir-medium text-2xl text-brand-primary mb-1">
+                  <div className="font-avenir-medium text-xl text-brand-primary mb-1">
                     {crop.netEmissionFactor2024.toFixed(1)}
                   </div>
-                  <div className="text-sm font-avenir-book text-gray-600 mb-1">kg CO2eq/kg (2024)</div>
+                  <div className="text-xs font-avenir-book text-gray-600 mb-1">kg CO2eq/kg (2024)</div>
                   <div className="text-xs font-avenir-book text-gray-500">
                     2018: {crop.netEmissionFactor2018.toFixed(1)} kg CO2eq/kg
                   </div>
@@ -122,10 +121,10 @@ const PDFProjectMetrics = () => {
                 </div>
 
                 <div className="text-center">
-                  <div className="font-avenir-medium text-2xl text-orange-600 mb-1">
+                  <div className="font-avenir-medium text-xl text-orange-600 mb-1">
                     {crop.emissionFactor2024.toFixed(1)}
                   </div>
-                  <div className="text-sm font-avenir-book text-gray-600 mb-1">kg CO2eq/kg (2024)</div>
+                  <div className="text-xs font-avenir-book text-gray-600 mb-1">kg CO2eq/kg (2024)</div>
                   <div className="text-xs font-avenir-book text-gray-500">
                     2018: {crop.emissionFactor2018.toFixed(1)} kg CO2eq/kg
                   </div>
@@ -136,10 +135,10 @@ const PDFProjectMetrics = () => {
                 </div>
 
                 <div className="text-center">
-                  <div className="font-avenir-medium text-2xl text-green-600 mb-1">
+                  <div className="font-avenir-medium text-xl text-green-600 mb-1">
                     {crop.totalRemoval2024.toLocaleString()}
                   </div>
-                  <div className="text-sm font-avenir-book text-gray-600 mb-1">tonnes (2024)</div>
+                  <div className="text-xs font-avenir-book text-gray-600 mb-1">tonnes (2024)</div>
                   <div className="text-xs font-avenir-book text-gray-500">
                     2018: {crop.totalRemoval2018.toLocaleString()} tonnes
                   </div>
@@ -150,9 +149,9 @@ const PDFProjectMetrics = () => {
                 </div>
               </div>
 
-              <div className="border-t border-gray-200 pt-3">
-                <h6 className="font-avenir-medium text-sm mb-2 text-gray-700">Source Breakdown (% of total emissions)</h6>
-                <div className="grid grid-cols-6 gap-2 text-xs">
+              <div className="border-t border-gray-200 pt-2">
+                <h6 className="font-avenir-medium text-xs mb-2 text-gray-700">Source Breakdown (% of total emissions)</h6>
+                <div className="grid grid-cols-6 gap-1 text-xs">
                   {Object.entries(crop.sourceBreakdown).map(([source, percentage]) => (
                     <div key={source} className="text-center">
                       <div className="font-avenir-medium text-brand-primary">{percentage}%</div>
@@ -167,16 +166,16 @@ const PDFProjectMetrics = () => {
       </div>
 
       {/* Planting & Tillage Practices */}
-      <div className="mb-10">
+      <div className="pdf-page-break">
         <h4 className="font-avenir-medium text-lg mb-4 text-brand-primary border-b border-brand-primary pb-2">Planting & Tillage Practices</h4>
         
-        <div className="grid grid-cols-3 gap-6">
+        <div className="practices-grid grid-cols-3 gap-4">
           {/* Rotation Classification */}
-          <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-            <h5 className="font-avenir-medium mb-3 text-green-800">Rotation Classification</h5>
-            <div className="text-center mb-3">
-              <div className="font-avenir-medium text-2xl text-green-600">{rotationData.avgCrops2024}</div>
-              <div className="text-sm font-avenir-book text-gray-600">avg crops per field (2024)</div>
+          <div className="bg-green-50 p-3 rounded-lg border border-green-200 pdf-no-break">
+            <h5 className="font-avenir-medium mb-2 text-green-800">Rotation Classification</h5>
+            <div className="text-center mb-2">
+              <div className="font-avenir-medium text-xl text-green-600">{rotationData.avgCrops2024}</div>
+              <div className="text-xs font-avenir-book text-gray-600">avg crops per field (2024)</div>
               <div className="text-xs font-avenir-book text-gray-500">2018: {rotationData.avgCrops2018} avg crops</div>
             </div>
             <div className="space-y-1 text-xs">
@@ -187,17 +186,17 @@ const PDFProjectMetrics = () => {
                 </div>
               ))}
             </div>
-            <div className="mt-2 pt-2 border-t border-green-300 text-xs font-avenir-book text-gray-600">
+            <div className="mt-2 pt-1 border-t border-green-300 text-xs font-avenir-book text-gray-600">
               *Fallow not counted as crop type
             </div>
           </div>
 
           {/* Vegetation Cover */}
-          <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-            <h5 className="font-avenir-medium mb-3 text-blue-800">Days Under Vegetation Cover (2024)</h5>
-            <div className="text-center mb-3">
-              <div className="font-avenir-medium text-2xl text-blue-600">{vegetationCover.average}</div>
-              <div className="text-sm font-avenir-book text-gray-600">average days</div>
+          <div className="bg-blue-50 p-3 rounded-lg border border-blue-200 pdf-no-break">
+            <h5 className="font-avenir-medium mb-2 text-blue-800">Days Under Vegetation Cover (2024)</h5>
+            <div className="text-center mb-2">
+              <div className="font-avenir-medium text-xl text-blue-600">{vegetationCover.average}</div>
+              <div className="text-xs font-avenir-book text-gray-600">average days</div>
             </div>
             <div className="space-y-1 text-xs">
               {Object.entries(vegetationCover.distribution).map(([range, percentage]) => (
@@ -210,11 +209,11 @@ const PDFProjectMetrics = () => {
           </div>
 
           {/* Tillage Classification */}
-          <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
-            <h5 className="font-avenir-medium mb-3 text-orange-800">Tillage Classification (2024)</h5>
-            <div className="text-center mb-3">
-              <div className="font-avenir-medium text-2xl text-orange-600">68%</div>
-              <div className="text-sm font-avenir-book text-gray-600">reduced/no-till</div>
+          <div className="bg-orange-50 p-3 rounded-lg border border-orange-200 pdf-no-break">
+            <h5 className="font-avenir-medium mb-2 text-orange-800">Tillage Classification (2024)</h5>
+            <div className="text-center mb-2">
+              <div className="font-avenir-medium text-xl text-orange-600">68%</div>
+              <div className="text-xs font-avenir-book text-gray-600">reduced/no-till</div>
             </div>
             <div className="space-y-1 text-xs">
               {Object.entries(tillageData).map(([type, percentage]) => (
@@ -229,16 +228,16 @@ const PDFProjectMetrics = () => {
       </div>
 
       {/* Fertilizer Management */}
-      <div className="mb-8">
+      <div className="pdf-section-spacing mt-6">
         <h4 className="font-avenir-medium text-lg mb-4 text-brand-primary border-b border-brand-primary pb-2">Fertilizer Management (2024)</h4>
         
-        <div className="grid grid-cols-3 gap-6">
+        <div className="practices-grid grid-cols-3 gap-4">
           {/* Nitrogen Use Efficiency */}
-          <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
-            <h5 className="font-avenir-medium mb-3 text-purple-800">Nitrogen Use Efficiency</h5>
-            <div className="text-center mb-3">
-              <div className="font-avenir-medium text-2xl text-purple-600">{fertilizerMgmt.nitrogenEfficiency.average}</div>
-              <div className="text-sm font-avenir-book text-gray-600">average ratio</div>
+          <div className="bg-purple-50 p-3 rounded-lg border border-purple-200 pdf-no-break">
+            <h5 className="font-avenir-medium mb-2 text-purple-800">Nitrogen Use Efficiency</h5>
+            <div className="text-center mb-2">
+              <div className="font-avenir-medium text-xl text-purple-600">{fertilizerMgmt.nitrogenEfficiency.average}</div>
+              <div className="text-xs font-avenir-book text-gray-600">average ratio</div>
             </div>
             <div className="space-y-1 text-xs">
               {Object.entries(fertilizerMgmt.nitrogenEfficiency).filter(([key]) => key !== 'average').map(([range, percentage]) => (
@@ -251,11 +250,11 @@ const PDFProjectMetrics = () => {
           </div>
 
           {/* Split Application */}
-          <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
-            <h5 className="font-avenir-medium mb-3 text-indigo-800">Split Nitrogen Application</h5>
-            <div className="text-center mb-3">
-              <div className="font-avenir-medium text-2xl text-indigo-600">47%</div>
-              <div className="text-sm font-avenir-book text-gray-600">of fields</div>
+          <div className="bg-indigo-50 p-3 rounded-lg border border-indigo-200 pdf-no-break">
+            <h5 className="font-avenir-medium mb-2 text-indigo-800">Split Nitrogen Application</h5>
+            <div className="text-center mb-2">
+              <div className="font-avenir-medium text-xl text-indigo-600">47%</div>
+              <div className="text-xs font-avenir-book text-gray-600">of fields</div>
             </div>
             <div className="space-y-1 text-xs">
               {Object.entries(fertilizerMgmt.splitApplication).map(([type, percentage]) => (
@@ -268,11 +267,11 @@ const PDFProjectMetrics = () => {
           </div>
 
           {/* Stabilizer Use */}
-          <div className="bg-teal-50 p-4 rounded-lg border border-teal-200">
-            <h5 className="font-avenir-medium mb-3 text-teal-800">Nitrogen Stabilizers</h5>
-            <div className="text-center mb-3">
-              <div className="font-avenir-medium text-2xl text-teal-600">34%</div>
-              <div className="text-sm font-avenir-book text-gray-600">of fields</div>
+          <div className="bg-teal-50 p-3 rounded-lg border border-teal-200 pdf-no-break">
+            <h5 className="font-avenir-medium mb-2 text-teal-800">Nitrogen Stabilizers</h5>
+            <div className="text-center mb-2">
+              <div className="font-avenir-medium text-xl text-teal-600">34%</div>
+              <div className="text-xs font-avenir-book text-gray-600">of fields</div>
             </div>
             <div className="space-y-1 text-xs">
               {Object.entries(fertilizerMgmt.stabilizerUse).map(([type, percentage]) => (

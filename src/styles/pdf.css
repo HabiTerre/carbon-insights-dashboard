@@ -13,10 +13,110 @@
     animation: none !important;
   }
 
-  /* Optimize layout for PDF */
+  /* Page break controls - Enhanced for better layout */
   .pdf-optimize {
     break-inside: avoid;
     page-break-inside: avoid;
+  }
+
+  /* Force page breaks for major sections */
+  .pdf-page-break {
+    page-break-before: always;
+  }
+
+  /* Prevent page breaks within these elements */
+  .pdf-no-break {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Table-specific page break prevention */
+  .pdf-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16pt;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .pdf-table thead {
+    display: table-header-group;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .pdf-table tbody {
+    display: table-row-group;
+  }
+
+  .pdf-table tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .pdf-table th,
+  .pdf-table td {
+    border: 1px solid #37414F;
+    padding: 6pt;
+    font-size: 10pt;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    page-break-inside: avoid;
+  }
+
+  .pdf-table th {
+    background-color: #f0f0f0 !important;
+    font-weight: bold;
+    color: #37414F !important;
+  }
+
+  /* Section sizing optimization */
+  .pdf-section-page {
+    min-height: 80vh;
+    max-height: 95vh;
+    page-break-after: always;
+  }
+
+  .pdf-section-half {
+    min-height: 40vh;
+    max-height: 45vh;
+  }
+
+  /* Grid layouts optimized for PDF */
+  .pdf-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12pt;
+    margin-bottom: 16pt;
+    page-break-inside: avoid;
+  }
+
+  .pdf-metric-card {
+    border: 1px solid #24923B;
+    padding: 8pt;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    page-break-inside: avoid;
+  }
+
+  /* Enhanced spacing for better page utilization */
+  .pdf-section-spacing {
+    margin-bottom: 20pt;
+    padding-bottom: 10pt;
+  }
+
+  /* Crop metrics cards - prevent breaking */
+  .crop-metrics-card {
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 12pt;
+  }
+
+  /* Practice analysis grid - keep together */
+  .practices-grid {
+    page-break-inside: avoid;
+    break-inside: avoid;
   }
 
   /* PDF-specific typography with brand fonts */
@@ -135,43 +235,6 @@
     visibility: visible !important;
   }
 
-  /* ... keep existing code (PDF table styles and other rules) */
-  .pdf-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 16pt;
-  }
-
-  .pdf-table th,
-  .pdf-table td {
-    border: 1px solid #37414F;
-    padding: 6pt;
-    font-size: 10pt;
-    text-align: left;
-    font-family: 'Inter', sans-serif;
-  }
-
-  .pdf-table th {
-    background-color: #f0f0f0 !important;
-    font-weight: bold;
-    color: #37414F !important;
-  }
-
-  .pdf-metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12pt;
-    margin-bottom: 16pt;
-  }
-
-  .pdf-metric-card {
-    border: 1px solid #24923B;
-    padding: 8pt;
-    text-align: center;
-    background-color: #f9f9f9;
-    border-radius: 4px;
-  }
-
   .pdf-chart-placeholder {
     width: 100%;
     height: 200px;
@@ -182,14 +245,6 @@
     background-color: #f9f9f9;
     margin-bottom: 16pt;
     border-radius: 8px;
-  }
-
-  .pdf-page-break {
-    page-break-before: always;
-  }
-
-  .pdf-no-break {
-    page-break-inside: avoid;
   }
 
   * {

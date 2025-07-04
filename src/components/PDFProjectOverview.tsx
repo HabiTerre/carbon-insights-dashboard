@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const PDFProjectOverview = () => {
@@ -25,13 +24,13 @@ const PDFProjectOverview = () => {
   ];
 
   return (
-    <div className="pdf-optimize mb-12">
+    <div className="pdf-optimize pdf-section-page mb-12">
       <h3 className="pdf-subtitle mb-6 text-center border-b-2 border-brand-primary pb-3 text-brand-text font-avenir-medium">1. Project Overview</h3>
       
-      <div className="grid grid-cols-2 gap-8 mb-8">
+      <div className="grid grid-cols-2 gap-6 mb-6 pdf-no-break">
         {/* Total Fields by State */}
-        <div className="bg-blue-50 p-5 rounded-lg border border-blue-200">
-          <h4 className="font-avenir-medium mb-4 text-blue-800 border-b border-blue-300 pb-2">Total Fields by State</h4>
+        <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+          <h4 className="font-avenir-medium mb-3 text-blue-800 border-b border-blue-300 pb-2">Total Fields by State</h4>
           <div className="space-y-2">
             {fieldsByState.map((item, index) => (
               <div key={index} className="flex justify-between items-center">
@@ -47,8 +46,8 @@ const PDFProjectOverview = () => {
         </div>
 
         {/* Total Acreage by State */}
-        <div className="bg-green-50 p-5 rounded-lg border border-green-200">
-          <h4 className="font-avenir-medium mb-4 text-green-800 border-b border-green-300 pb-2">Total Acreage by State</h4>
+        <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+          <h4 className="font-avenir-medium mb-3 text-green-800 border-b border-green-300 pb-2">Total Acreage by State</h4>
           <div className="space-y-2">
             {fieldsByState.map((item, index) => (
               <div key={index} className="flex justify-between items-center">
@@ -65,25 +64,25 @@ const PDFProjectOverview = () => {
       </div>
 
       {/* Fields and Acreage by Crop */}
-      <div className="mb-8">
-        <h4 className="font-avenir-medium mb-4 text-brand-text border-b border-gray-300 pb-2">Distribution by Crop Type</h4>
+      <div className="mb-6 pdf-no-break">
+        <h4 className="font-avenir-medium mb-3 text-brand-text border-b border-gray-300 pb-2">Distribution by Crop Type</h4>
         <div className="overflow-hidden rounded-lg border border-gray-300">
           <table className="pdf-table w-full">
             <thead className="bg-gray-100">
               <tr>
-                <th className="text-left font-avenir-medium py-3 px-4 border-b border-gray-300">Crop Type</th>
-                <th className="text-center font-avenir-medium py-3 px-4 border-b border-gray-300">Fields</th>
-                <th className="text-center font-avenir-medium py-3 px-4 border-b border-gray-300">Acreage</th>
-                <th className="text-center font-avenir-medium py-3 px-4 border-b border-gray-300">% of Total</th>
+                <th className="text-left font-avenir-medium py-2 px-3 border-b border-gray-300">Crop Type</th>
+                <th className="text-center font-avenir-medium py-2 px-3 border-b border-gray-300">Fields</th>
+                <th className="text-center font-avenir-medium py-2 px-3 border-b border-gray-300">Acreage</th>
+                <th className="text-center font-avenir-medium py-2 px-3 border-b border-gray-300">% of Total</th>
               </tr>
             </thead>
             <tbody>
               {fieldsByCrop.map((crop, index) => (
                 <tr key={index} className={index % 2 === 0 ? "bg-white" : "bg-gray-50"}>
-                  <td className="py-3 px-4 font-avenir-book border-b border-gray-200">{crop.crop}</td>
-                  <td className="py-3 px-4 text-center font-avenir-book border-b border-gray-200">{crop.fields.toLocaleString()}</td>
-                  <td className="py-3 px-4 text-center font-avenir-book border-b border-gray-200">{crop.acreage.toLocaleString()}</td>
-                  <td className="py-3 px-4 text-center font-avenir-medium border-b border-gray-200">{crop.percentage}%</td>
+                  <td className="py-2 px-3 font-avenir-book border-b border-gray-200">{crop.crop}</td>
+                  <td className="py-2 px-3 text-center font-avenir-book border-b border-gray-200">{crop.fields.toLocaleString()}</td>
+                  <td className="py-2 px-3 text-center font-avenir-book border-b border-gray-200">{crop.acreage.toLocaleString()}</td>
+                  <td className="py-2 px-3 text-center font-avenir-medium border-b border-gray-200">{crop.percentage}%</td>
                 </tr>
               ))}
             </tbody>
@@ -92,10 +91,10 @@ const PDFProjectOverview = () => {
       </div>
 
       {/* Project Duration and Changes */}
-      <div className="grid grid-cols-2 gap-8">
-        <div className="bg-orange-50 p-5 rounded-lg border border-orange-200">
-          <h4 className="font-avenir-medium mb-4 text-orange-800 border-b border-orange-300 pb-2">Project Duration</h4>
-          <div className="space-y-2 font-avenir-book">
+      <div className="grid grid-cols-2 gap-6 pdf-no-break">
+        <div className="bg-orange-50 p-4 rounded-lg border border-orange-200">
+          <h4 className="font-avenir-medium mb-3 text-orange-800 border-b border-orange-300 pb-2">Project Duration</h4>
+          <div className="space-y-2 font-avenir-book text-sm">
             <p><strong>Baseline Year:</strong> 2018</p>
             <p><strong>Current Year:</strong> 2024</p>
             <p><strong>Total Duration:</strong> 6 years</p>
@@ -103,8 +102,8 @@ const PDFProjectOverview = () => {
           </div>
         </div>
 
-        <div className="bg-purple-50 p-5 rounded-lg border border-purple-200">
-          <h4 className="font-avenir-medium mb-4 text-purple-800 border-b border-purple-300 pb-2">Net Emission Factor Changes</h4>
+        <div className="bg-purple-50 p-4 rounded-lg border border-purple-200">
+          <h4 className="font-avenir-medium mb-3 text-purple-800 border-b border-purple-300 pb-2">Net Emission Factor Changes</h4>
           <div className="space-y-2">
             {emissionChanges.map((crop, index) => (
               <div key={index} className="flex justify-between items-center">
