@@ -66,7 +66,7 @@ const Index = () => {
       />
 
       <div className="print:hidden min-h-screen bg-white">
-        <div className="max-w-7xl mx-auto p-8 space-y-8">
+        <div className="w-full p-8 space-y-8">
           <LogosSection 
             tysonLogo={tysonLogo}
             habitarreLogo={habitarreLogo}
