@@ -1,11 +1,8 @@
 
 import React from 'react';
 import MetricsSection from "@/components/MetricsSection";
-import DashboardTabs from "@/components/DashboardTabs";
 import ProjectSummaryCard from "@/components/ProjectSummaryCard";
 import LogosSection from "@/components/LogosSection";
-import FilterAndExportSection from "@/components/FilterAndExportSection";
-import MapAndStatsSection from "@/components/MapAndStatsSection";
 import PDFVersion from "@/components/PDFVersion";
 import { useDashboardState } from "@/hooks/useDashboardState";
 import { useImageHandlers } from "@/hooks/useImageHandlers";
@@ -77,31 +74,10 @@ const Index = () => {
 
           <ProjectSummaryCard />
 
-          <FilterAndExportSection 
-            selectedState={selectedState}
-            selectedCounty={selectedCounty}
-            selectedYear={selectedYear}
-            onStateChange={handleStateChange}
-            onCountyChange={setSelectedCounty}
-            onYearChange={setSelectedYear}
-            onClearFilters={handleClearFilters}
-          />
-
-          <MapAndStatsSection 
-            selectedState={selectedState}
-            selectedCounty={selectedCounty}
-            selectedYear={selectedYear}
-          />
-
           <MetricsSection 
             selectedMetricCategory={selectedMetricCategory}
             selectedCrop={selectedCrop}
             onCategoryChange={setSelectedMetricCategory}
-            onCropChange={setSelectedCrop}
-          />
-
-          <DashboardTabs 
-            selectedCrop={selectedCrop}
             onCropChange={setSelectedCrop}
           />
         </div>
