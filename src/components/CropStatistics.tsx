@@ -9,7 +9,7 @@ const CropStatistics = () => {
   return (
     <Card className="h-full border-brand-grey shadow-lg flex flex-col hover:shadow-xl hover:bg-brand-grey/20 hover:border-brand-primary transition-all duration-300">
       <CardHeader className="pb-2 flex-shrink-0">
-        <CardTitle className="text-sm font-avenir-medium text-brand-text">Area by crop type</CardTitle>
+        <CardTitle className="text-brand-text text-xl font-avenir-medium">Area by crop type</CardTitle>
         <div className="text-xs text-brand-text/70 font-avenir-book">Acres</div>
       </CardHeader>
       <CardContent className="flex-1 flex flex-col p-4 min-h-0">
