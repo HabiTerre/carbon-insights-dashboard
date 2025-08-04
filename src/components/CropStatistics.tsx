@@ -12,10 +12,10 @@ const CropStatistics = () => {
         <CardTitle className="text-sm font-avenir-medium text-brand-text">Area by crop type</CardTitle>
         <div className="text-xs text-brand-text/70 font-avenir-book">Acres</div>
       </CardHeader>
-      <CardContent className="flex-1 flex flex-col">
+      <CardContent className="flex-1 flex flex-col p-4 min-h-0">
         <div className="text-3xl font-avenir-black text-brand-text">300K</div>
         <div className="text-xs text-brand-text/60 mt-1 font-avenir-book">{totalFields.toLocaleString()} fields</div>
-        <div className="mt-4 space-y-3 flex-1 overflow-y-auto">
+        <div className="mt-4 space-y-3 flex-1 overflow-y-auto min-h-0">
           {cropTypeData.map((crop, index) => (
             <div key={index} className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
