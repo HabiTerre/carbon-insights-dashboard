@@ -77,7 +77,9 @@ const Index = () => {
           <ProjectSummaryCard />
 
           <div className="space-y-8">
-            <CropStatistics />
+            <div className="max-w-md mx-auto">
+              <CropStatistics />
+            </div>
             
             <MetricsSection 
               selectedMetricCategory={selectedMetricCategory}
