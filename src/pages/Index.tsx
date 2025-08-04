@@ -77,16 +77,20 @@ const Index = () => {
           <ProjectSummaryCard />
 
           <div className="space-y-8">
-            <div className="max-w-md mx-auto">
-              <CropStatistics />
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2">
+                <MetricsSection 
+                  selectedMetricCategory={selectedMetricCategory}
+                  selectedCrop={selectedCrop}
+                  onCategoryChange={setSelectedMetricCategory}
+                  onCropChange={setSelectedCrop}
+                />
+              </div>
+              
+              <div className="lg:col-span-1">
+                <CropStatistics />
+              </div>
             </div>
-            
-            <MetricsSection 
-              selectedMetricCategory={selectedMetricCategory}
-              selectedCrop={selectedCrop}
-              onCategoryChange={setSelectedMetricCategory}
-              onCropChange={setSelectedCrop}
-            />
           </div>
 
           <DashboardTabs 
