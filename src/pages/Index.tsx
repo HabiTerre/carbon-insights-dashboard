@@ -8,6 +8,7 @@ import CropStatistics from "@/components/CropStatistics";
 import PDFVersion from "@/components/PDFVersion";
 import { useDashboardState } from "@/hooks/useDashboardState";
 import { useImageHandlers } from "@/hooks/useImageHandlers";
+import { useProjectData } from "@/hooks/useProjectData";
 
 const Index = () => {
   const {
@@ -25,6 +26,23 @@ const Index = () => {
   } = useDashboardState();
 
   const { handleImageError, handleImageLoad } = useImageHandlers();
+  const { projectSlug, projectData, loading, error } = useProjectData();
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-lg text-brand-primary">Loading project data...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-lg text-red-600">Error: {error}</div>
+      </div>
+    );
+  }
 
   // Updated to use the new uploaded logos
   const tysonLogo = "/lovable-uploads/465f8949-e376-4c51-be65-f6c5fc5848a0.png";
