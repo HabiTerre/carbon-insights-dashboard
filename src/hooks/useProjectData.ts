@@ -1,9 +1,9 @@
-import { useParams } from 'react-router-dom';
+import { useProject } from "@/context/ProjectContext";
 import { useState, useEffect } from 'react';
 
 // This hook will handle fetching project-specific data based on the URL slug
 export const useProjectData = () => {
-  const { projectSlug } = useParams<{ projectSlug: string }>();
+  const { projectSlug } = useProject();
   const [projectData, setProjectData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
